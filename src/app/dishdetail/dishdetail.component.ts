@@ -60,7 +60,7 @@ export class DishdetailComponent implements OnInit {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
 
   	this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(+params['id'])))
-    .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); }, errMess => this.errMess = errMess);
+    .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); }, errMess => this.errMess = `${errMess.status} - ${errMess.statusText}`);
   }
 
   createForm(): void {
@@ -111,7 +111,7 @@ export class DishdetailComponent implements OnInit {
     console.log(this.comment);
 
     this.dishcopy.comments.push(this.comment); // push new comment to comment array
-        
+    this.dishcopy.save().subscribe(dish => this.dish);
     
 
     this.commentForm.reset({

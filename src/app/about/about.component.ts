@@ -17,7 +17,7 @@ export class AboutComponent implements OnInit {
   constructor(private leaderService: LeaderService, @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
-  	this.leaderService.getLeaders().subscribe(leaders => this.leaders = leaders, errmess => this.errMess = <any>errmess);
+  	this.leaderService.getLeaders().subscribe(leaders => this.leaders = leaders, errMess => this.errMess = `${errMess.status} - ${errMess.statusText}`);
   }
 
 }
