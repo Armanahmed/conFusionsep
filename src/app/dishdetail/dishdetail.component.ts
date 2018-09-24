@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

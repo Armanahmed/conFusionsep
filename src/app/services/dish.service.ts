@@ -8,8 +8,7 @@ import { baseURL } from '../shared/baseurl';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 
-import { delay } from 'rxjs/operators';
-import { catch } from 'rxjs/operators';
+
 import { map, catchError } from 'rxjs/operators';
 
 
@@ -34,8 +33,7 @@ export class DishService {
 
   getDishIds(): Observable<number[] | any> {
     return this.getDishes()
-      .pipe(map(dishes => dishes.map(dish => dish.id)),
-        catchError(error => error ));
+      .pipe(map(dishes => dishes.map(dish => dish.id)));
   }
 
 }
